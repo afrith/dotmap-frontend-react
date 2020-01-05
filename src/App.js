@@ -1,9 +1,15 @@
 import React from 'react'
 import './App.css'
+import DrawerLayout from './DrawerLayout'
 
 function App () {
   return (
-    <div>Hello, world.</div>
+    <DrawerLayout
+      title='Dot Map of South Africa'
+      mainContent={<div style={{ backgroundColor: 'red', height: '100%' }}>Map</div>}
+      drawerTitle='Settings'
+      drawerContent='Controls'
+    />
   )
 }
 

@@ -1,16 +1,28 @@
 import React, { useCallback } from 'react'
 import { QueryParamProvider, useQueryParams, NumberParam } from 'use-query-params'
+import { merge } from 'lodash'
 import './App.css'
 import DrawerLayout from './DrawerLayout'
 import Map from './Map'
 
-function App () {
-  console.log('Rendering')
+const DEFAULT_STATE = {
+  lat: -28.5,
+  lon: 24.6,
+  zoom: 6
+}
 
-  const [query, setQuery] = useQueryParams({ lat: NumberParam, lon: NumberParam, zoom: NumberParam })
+const QUERY_TYPES = {
+  lat: NumberParam,
+  lon: NumberParam,
+  zoom: NumberParam
+}
+
+function App () {
+  const [query, setQuery] = useQueryParams(QUERY_TYPES)
+  const { lat, lon, zoom } = merge({}, DEFAULT_STATE, query)
   const viewport = {
-    center: [query.lat || -28.5, query.lon || 24.6],
-    zoom: query.zoom || 6
+    center: [lat, lon],
+    zoom: zoom
   }
 
   const handleViewportChanged = useCallback(viewport => {

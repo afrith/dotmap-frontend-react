@@ -14,21 +14,23 @@ const DEFAULT_STATE = {
   lat: -28.5,
   lon: 24.6,
   zoom: 6,
-  dots: 'race'
+  dots: 'race',
+  bg: 'street'
 }
 
 const QUERY_TYPES = {
   lat: NumberParam,
   lon: NumberParam,
   zoom: NumberParam,
-  dots: StringParam
+  dots: StringParam,
+  bg: StringParam
 }
 
 function App () {
   useHistoryUpdate(history)
 
   const [query, setQuery] = useQueryParams(QUERY_TYPES)
-  const { lat, lon, zoom, dots } = merge({}, DEFAULT_STATE, query)
+  const { lat, lon, zoom, dots, bg } = merge({}, DEFAULT_STATE, query)
   const viewport = {
     center: [lat, lon],
     zoom: zoom
@@ -44,12 +46,14 @@ function App () {
   }, [setQuery])
 
   const handleChangeDots = useCallback(dots => setQuery({ dots }), [setQuery])
+  const handleChangeBg = useCallback(bg => setQuery({ bg }), [setQuery])
 
   const map = (
     <Map
       viewport={viewport}
       onViewportChanged={handleViewportChanged}
       dots={dots}
+      bg={bg}
     />
   )
 
@@ -57,6 +61,8 @@ function App () {
     <ControlPane
       dots={dots}
       onChangeDots={handleChangeDots}
+      bg={bg}
+      onChangeBg={handleChangeBg}
     />
   )
 

@@ -1,9 +1,13 @@
 import React, { useCallback } from 'react'
 import { QueryParamProvider, useQueryParams, NumberParam } from 'use-query-params'
+import { createBrowserHistory } from 'history'
 import { merge } from 'lodash'
 import './App.css'
 import DrawerLayout from './DrawerLayout'
 import Map from './Map'
+import useHistoryUpdate from './useHistoryUpdate'
+
+const history = createBrowserHistory()
 
 const DEFAULT_STATE = {
   lat: -28.5,
@@ -18,6 +22,8 @@ const QUERY_TYPES = {
 }
 
 function App () {
+  useHistoryUpdate(history)
+
   const [query, setQuery] = useQueryParams(QUERY_TYPES)
   const { lat, lon, zoom } = merge({}, DEFAULT_STATE, query)
   const viewport = {
@@ -35,14 +41,16 @@ function App () {
   }, [setQuery])
 
   return (
-    <QueryParamProvider history={window.history}>
-      <DrawerLayout
-        title='Dot Map of South Africa'
-        mainContent={<Map viewport={viewport} onViewportChanged={handleViewportChanged} />}
-        drawerContent='Controls'
-      />
-    </QueryParamProvider>
+    <DrawerLayout
+      title='Dot Map of South Africa'
+      mainContent={<Map viewport={viewport} onViewportChanged={handleViewportChanged} />}
+      drawerContent='Controls'
+    />
   )
 }
 
-export default App
+export default () => (
+  <QueryParamProvider history={history}>
+    <App />
+  </QueryParamProvider>
+)

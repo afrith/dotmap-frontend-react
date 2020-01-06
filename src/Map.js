@@ -8,6 +8,8 @@ export default function Map (props) {
     <LeafletMap
       viewport={viewport}
       onViewportChanged={onViewportChanged}
+      minZoom={6}
+      maxZoom={14}
     >
       <TileLayer
         attribution='Streetmap &amp;copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

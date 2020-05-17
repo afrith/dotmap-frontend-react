@@ -20,7 +20,7 @@ export default function ControlPane (props) {
       <FormControl component='fieldset' margin='normal'>
         <FormLabel component='legend'>Background</FormLabel>
         <RadioGroup aria-label='Background' name='bg' value={bg} onChange={e => onChangeBg(e.target.value)}>
-          <FormControlLabel value='street' control={<Radio />} label='Streetmap' />
+          <FormControlLabel value='street' control={<Radio />} label='Map' />
           <FormControlLabel value='aerial' control={<Radio />} label='Aerial photo' />
         </RadioGroup>
       </FormControl>

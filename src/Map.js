@@ -20,7 +20,11 @@ const aerialStyle = fromJS({
     {
       id: 'aerial',
       source: 'ngi-aerial',
-      type: 'raster'
+      type: 'raster',
+      paint: {
+        'raster-brightness-max': 0.6,
+        'raster-saturation': -0.5
+      }
     }
   ]
 })

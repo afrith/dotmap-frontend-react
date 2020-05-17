@@ -36,11 +36,11 @@ function App () {
       lat: latitude.toFixed(4), // see https://xkcd.com/2170/
       lon: longitude.toFixed(4),
       zoom: zoom.toFixed(2)
-    })
+    }, 'replaceIn')
   }, [setQuery])
 
-  const handleChangeDots = useCallback(dots => setQuery({ dots }), [setQuery])
-  const handleChangeBg = useCallback(bg => setQuery({ bg }), [setQuery])
+  const handleChangeDots = useCallback(dots => setQuery({ dots }, 'replaceIn'), [setQuery])
+  const handleChangeBg = useCallback(bg => setQuery({ bg }, 'replaceIn'), [setQuery])
 
   const map = (
     <Map

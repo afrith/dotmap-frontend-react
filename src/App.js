@@ -11,9 +11,6 @@ import useHistoryUpdate from './useHistoryUpdate'
 const history = createBrowserHistory()
 
 const DEFAULT_STATE = {
-  lat: -28.5,
-  lon: 24.6,
-  zoom: 6,
   dots: 'race',
   bg: 'street'
 }
@@ -31,17 +28,14 @@ function App () {
 
   const [query, setQuery] = useQueryParams(QUERY_TYPES)
   const { lat, lon, zoom, dots, bg } = merge({}, DEFAULT_STATE, query)
-  const viewport = {
-    center: [lat, lon],
-    zoom: zoom
-  }
 
   const handleViewportChanged = useCallback(viewport => {
-    const { center, zoom } = viewport
+    const { latitude, longitude, zoom } = viewport
+    if (!(latitude && longitude && zoom)) return
     setQuery({
-      lat: center[0].toFixed(5), // see https://xkcd.com/2170/
-      lon: center[1].toFixed(5),
-      zoom
+      lat: latitude.toFixed(5), // see https://xkcd.com/2170/
+      lon: longitude.toFixed(5),
+      zoom: zoom
     })
   }, [setQuery])
 
@@ -50,7 +44,9 @@ function App () {
 
   const map = (
     <Map
-      viewport={viewport}
+      latitude={lat}
+      longitude={lon}
+      zoom={zoom}
       onViewportChanged={handleViewportChanged}
       dots={dots}
       bg={bg}

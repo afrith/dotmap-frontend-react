@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import ReactMapGL, { Source, Layer, WebMercatorViewport } from 'react-map-gl'
 import { fromJS } from 'immutable'
+import themeColours from './themeColours'
 
 const streetmapStyle = 'https://maptiles.frith.dev/styles/positron/style.json'
 
@@ -29,11 +30,7 @@ const aerialStyle = fromJS({
   ]
 })
 
-const colours = {
-  race: ['#60b260', '#f4b925', '#ea4934', '#b270e5', '#777777']
-}
-
-const sourceCodes = Object.keys(colours)
+const sourceCodes = Object.keys(themeColours)
 
 const sources = sourceCodes.map(code => ({
   id: code,
@@ -50,7 +47,7 @@ sourceCodes.forEach(code => {
     source: code,
     'source-layer': code,
     paint: {
-      'circle-color': ['to-color', ['at', ['get', 'race'], ['literal', colours[code]]]],
+      'circle-color': ['to-color', ['at', ['get', code], ['literal', themeColours[code]]]],
       'circle-opacity': 0.5,
       'circle-radius': 2.2
     }

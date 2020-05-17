@@ -33,9 +33,9 @@ function App () {
     const { latitude, longitude, zoom } = viewport
     if (!(latitude && longitude && zoom)) return
     setQuery({
-      lat: latitude.toFixed(5), // see https://xkcd.com/2170/
-      lon: longitude.toFixed(5),
-      zoom: zoom
+      lat: latitude.toFixed(4), // see https://xkcd.com/2170/
+      lon: longitude.toFixed(4),
+      zoom: zoom.toFixed(2)
     })
   }, [setQuery])
 

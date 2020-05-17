@@ -9,7 +9,7 @@ const aerialStyle = fromJS({
   sources: {
     'ngi-aerial': {
       type: 'raster',
-      tiles: ['http://localhost:3000/ngi-aerial/{z}/{x}/{y}.jpg'],
+      tiles: [`${process.env.REACT_APP_NGI_AERIAL_ROOT}/{z}/{x}/{y}.jpg`],
       tileSize: 256,
       minzoom: 0,
       maxzoom: 20,
@@ -38,7 +38,7 @@ const sourceCodes = Object.keys(colours)
 const sources = sourceCodes.map(code => ({
   id: code,
   type: 'vector',
-  tiles: [`http://localhost:3000/tiles/${code}/{z}/{x}/{y}.mvt`],
+  tiles: [`${process.env.REACT_APP_TILE_ROOT}/${code}/{z}/{x}/{y}.mvt`],
   maxzoom: 13
 }))
 

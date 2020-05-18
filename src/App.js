@@ -67,7 +67,7 @@ function App () {
   return (
     <DrawerLayout
       title='Dot Map of South Africa'
-      subtitle={<a style={{ color: 'white' }} href='https://adrian.frith.dev/'>by Adrian Frith</a>}
+      subtitle={<>by <a style={{ color: 'white' }} href='https://adrian.frith.dev/'>Adrian Frith</a></>}
       mainContent={map}
       drawerContent={controls}
     />

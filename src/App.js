@@ -59,6 +59,7 @@ function App () {
       onChangeDots={handleChangeDots}
       bg={bg}
       onChangeBg={handleChangeBg}
+      zoom={zoom}
     />
   )
 

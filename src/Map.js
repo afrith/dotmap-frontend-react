@@ -47,7 +47,7 @@ sourceCodes.forEach(code => {
     source: code,
     'source-layer': code,
     paint: {
-      'circle-color': ['to-color', ['at', ['get', code], ['literal', themeColours[code]]]],
+      'circle-color': ['to-color', ['at', ['get', code], ['literal', themeColours[code].map(x => x.colour)]]],
       'circle-opacity': 0.5,
       'circle-radius': 2.2
     }

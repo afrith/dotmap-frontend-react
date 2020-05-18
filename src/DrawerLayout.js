@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react'
-import { AppBar, CssBaseline, Divider, Drawer, IconButton, Toolbar, Typography, useMediaQuery } from '@material-ui/core'
+import { AppBar, CssBaseline, Divider, Drawer, IconButton, Toolbar, Typography, useMediaQuery, Hidden } from '@material-ui/core'
 import { Menu as MenuIcon } from '@material-ui/icons'
 import { useTheme, makeStyles } from '@material-ui/core/styles'
 
@@ -54,7 +54,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function DrawerLayout (props) {
-  const { title, drawerTitle, mainContent, drawerContent } = props
+  const { title, subtitle, drawerTitle, mainContent, drawerContent } = props
 
   const classes = useStyles()
   const theme = useTheme()
@@ -83,6 +83,12 @@ export default function DrawerLayout (props) {
           <Typography variant='h6' noWrap>
             {title}
           </Typography>
+          <div style={{ flexGrow: 1 }} />
+          <Hidden xsDown>
+            <Typography variant='subtitle1'>
+              {subtitle}
+            </Typography>
+          </Hidden>
         </Toolbar>
       </AppBar>
 

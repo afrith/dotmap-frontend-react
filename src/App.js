@@ -27,7 +27,8 @@ function App () {
   useHistoryUpdate(history)
 
   const [query, setQuery] = useQueryParams(QUERY_TYPES)
-  const { lat, lon, zoom, dots, bg } = merge({}, DEFAULT_STATE, query)
+  const { lat, lon, zoom: queryZoom, dots, bg } = merge({}, DEFAULT_STATE, query)
+  const zoom = queryZoom + 5
 
   const handleViewportChanged = useCallback(viewport => {
     const { latitude, longitude, zoom } = viewport
@@ -35,7 +36,7 @@ function App () {
     setQuery({
       lat: latitude.toFixed(4), // see https://xkcd.com/2170/
       lon: longitude.toFixed(4),
-      zoom: zoom.toFixed(2)
+      zoom: (zoom - 5).toFixed(2)
     }, 'replaceIn')
   }, [setQuery])
 

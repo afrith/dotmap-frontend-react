@@ -6,17 +6,17 @@ const dotsetInfo = {
   race: {
     label: 'people',
     density: { 5: '5,000', 6: '2,500', 7: '1,000', 8: '500', 9: '250', 10: '100', 11: '50', 12: '25', 13: '10' },
-    note: 'From self-identification in Census 2011.'
+    note: <>From self-identification in <a href='http://www.statssa.gov.za/'>Census 2011</a>.</>
   },
   lang: {
     label: 'people',
     density: { 5: '5,000', 6: '2,500', 7: '1,000', 8: '500', 9: '250', 10: '100', 11: '50', 12: '25', 13: '10' },
-    note: 'First language from Census 2011. Note that some 800,000 people living in institutional settings were not asked about their languages and are not included here.'
+    note: <>First language from <a href='http://www.statssa.gov.za/'>Census 2011</a>. Note that some 800,000 people living in institutional settings were not asked about their languages and are not included here.</>
   },
   hhinc: {
     label: 'households',
     density: { 5: '2,500', 6: '1,000', 7: '500', 8: '250', 9: '100', 10: '50', 11: '25', 12: '10', 13: '5' },
-    note: 'Annual household income from Census 2011. Note that some 800,000 people living in institutional settings are not included in household statistics.'
+    note: <>Annual household income from <a href='http://www.statssa.gov.za/'>Census 2011</a>. Note that some 800,000 people living in institutional settings are not included in household statistics.</>
   }
 }
 

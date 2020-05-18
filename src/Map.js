@@ -14,7 +14,7 @@ const aerialStyle = fromJS({
       tileSize: 256,
       minzoom: 0,
       maxzoom: 20,
-      attribution: 'Aerial photo by <a href="http://www.ngi.gov.za/">NGI</a>'
+      attribution: 'Aerial photo © <a href="http://www.ngi.gov.za/">National Geo-spatial Information</a>'
     }
   },
   layers: [

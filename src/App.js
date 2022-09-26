@@ -74,8 +74,10 @@ function App () {
   )
 }
 
-export default () => (
+const WrappedApp = () => (
   <QueryParamProvider history={history}>
     <App />
   </QueryParamProvider>
 )
+
+export default WrappedApp
